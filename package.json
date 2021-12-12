@@ -1,0 +1,48 @@
+{
+  "name": "react-native-google-agenda",
+  "version": "0.0.1",
+  "description": "A library inspired by google agenda.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "vers": "node ./versionalization.js",
+    "commit": "yarn vers && git add . && git-cz && git push && npm publish"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "child_process": "^1.0.2",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^19.0.2",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.27.1",
+    "prettier": "^2.5.1",
+    "prettier-eslint": "^13.0.0",
+    "react": "^17.0.2",
+    "react-native": "^0.66.4"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "author": {
+    "email": "kohatsukendi@gmail.com",
+    "name": "Alisson Kendi Kohatsu",
+    "url": "https://www.github.com/kendi95"
+  },
+  "contributors": [
+    {
+      "email": "kohatsukendi@gmail.com",
+      "name": "Alisson Kendi Kohatsu",
+      "url": "https://www.github.com/kendi95"
+    }
+  ],
+  "license": "ISC",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "private": false
+}
