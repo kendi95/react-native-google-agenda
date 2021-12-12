@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "vers": "node ./versionalization.js && git add .",
-    "commit": "git-cz && git push && npm login && npm publish"
+    "commit": "yarn git-cz && git push && npm login && npm publish"
   },
   "devDependencies": {
     "@types/react-native-vector-icons": "^6.4.10",
