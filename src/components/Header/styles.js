@@ -5,7 +5,7 @@ export const Container = styled.View`
   flex: 1;
   flex-direction: row;
   align-items: center;
-  background: ${({ color }) => color};
+  background-color: ${({ color }) => color};
 `;
 
 export const MonthButton = styled(RectButton)`
