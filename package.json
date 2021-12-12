@@ -50,45 +50,7 @@
   "license": "mit",
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog",
-      "types": {
-        "component": {
-          "description": "A new component",
-          "title": "Component"
-        },
-        "feat": {
-          "description": "A new feature",
-          "title": "Feature"
-        },
-        "fix": {
-          "description": "A bug fix",
-          "title": "Fix"
-        },
-        "docs": {
-          "description": "Documentation only changes",
-          "title": "Docs"
-        },
-        "style": {
-          "description": "Changes taht do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
-          "title": "Style"
-        },
-        "refactor": {
-          "description": "A code change that neither fixes a bug or adds a feature",
-          "title": "Refactor"
-        },
-        "perf": {
-          "description": "A code change that improves performance",
-          "title": "Performance"
-        },
-        "test": {
-          "description": "Adding missing tests",
-          "title": "Test"
-        },
-        "chore": {
-          "description": "Changes to the build process or auxiliaty tools and libraries such as documentation generation",
-          "title": "Chore"
-        }
-      }
+      "path": "./node_modules/cz-conventional-changelog"
     }
   },
   "private": false
