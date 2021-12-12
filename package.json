@@ -1,13 +1,13 @@
 {
   "name": "react-native-google-agenda",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A library inspired by google agenda.",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "vers": "node ./versionalization.js",
-    "commit": "yarn vers && git add . && git-cz && git push && npm publish"
+    "commit": "yarn vers && git add . && git-cz && git push && npm login && npm publish"
   },
   "devDependencies": {
     "@types/react-native-vector-icons": "^6.4.10",
@@ -47,10 +47,16 @@
       "url": "https://www.github.com/kendi95"
     }
   ],
-  "license": "ISC",
+  "license": "mit",
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "./node_modules/cz-conventional-changelog",
+      "types": {
+        "component": {
+          "description": "A new component",
+          "title": "Component"
+        }
+      }
     }
   },
   "private": false
