@@ -17,3 +17,7 @@ export const MonthButton = styled(RectButton)`
   width: 100%;
   padding: 16px 16px;
 `;
+
+export const MonthLabel = styled.Text`
+  font-size: 18px;
+`;
