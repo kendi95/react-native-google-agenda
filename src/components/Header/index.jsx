@@ -8,7 +8,7 @@ import {
   MonthLabel
 } from './styles';
 
-export function Header() {
+export default function Header() {
 
   return (
     <>
