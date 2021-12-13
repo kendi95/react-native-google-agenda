@@ -17,7 +17,7 @@ export function Header() {
         backgroundColor="#efefef"
       />
 
-      <Container>
+      <Container color="#efefef">
         <MonthButton color="#efefef">
           <MonthLabel>January</MonthLabel>
           <FeatherIcon name="chevron-down" size={24} />

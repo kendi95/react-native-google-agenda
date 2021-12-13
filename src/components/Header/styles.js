@@ -16,6 +16,7 @@ export const MonthButton = styled(RectButton)`
 
   width: 100%;
   padding: 16px 16px;
+  background-color: ${({ color }) => color};
 `;
 
 export const MonthLabel = styled.Text`
