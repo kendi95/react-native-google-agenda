@@ -12,10 +12,13 @@ export function Header() {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor="#efefef" />
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="#efefef"
+      />
 
       <Container>
-        <MonthButton color="#ffffff">
+        <MonthButton color="#efefef">
           <MonthLabel>January</MonthLabel>
           <FeatherIcon name="chevron-down" size={24} />
         </MonthButton>
