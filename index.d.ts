@@ -49,6 +49,11 @@ interface HeaderProps {
    * @type { FeatherIconName }
    */
   moreIcon?: FeatherIconName;
+
+  menuButtonOnPress(): void;
+  searchButtonOnPress(): void;
+  calendarButtonOnPress(): void;
+  moreButtonOnPress(): void;
 }
 
 export const Header: FC<HeaderProps>;

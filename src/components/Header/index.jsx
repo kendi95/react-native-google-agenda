@@ -7,23 +7,26 @@ import {
   MonthLabel,
   ActionButton
 } from './styles';
-import { ICON_NAMES } from './types';
 
 export function Header({
   activeMenuButton = true,
   activeSearchButton = true,
   activeCalendarButton = true,
   activeMoreVerticalButton = true,
-  menuIcon = null || ICON_NAMES,
-  searchIcon = null || ICON_NAMES,
-  calendarIcon = null || ICON_NAMES,
-  moreIcon = null
+  menuIcon = null,
+  searchIcon = null,
+  calendarIcon = null,
+  moreIcon = null,
+  menuButtonOnPress = () => {},
+  searchButtonOnPress = () => {},
+  calendarButtonOnPress = () => {},
+  moreButtonOnPress = () => {}
 }) {
 
   return (
     <Container color="#efefef">
       {activeMenuButton &&
-        <ActionButton>
+        <ActionButton onPress={menuButtonOnPress}>
           <FeatherIcon
             name={menuIcon ? menuIcon : "menu"}
             size={20}
@@ -37,7 +40,7 @@ export function Header({
       </MonthButton>
 
       {activeSearchButton &&
-        <ActionButton>
+        <ActionButton onPress={searchButtonOnPress}>
           <FeatherIcon
             name={searchIcon ? searchIcon : "search"}
             size={20}
@@ -46,7 +49,7 @@ export function Header({
       }
 
       {activeCalendarButton &&
-        <ActionButton>
+        <ActionButton onPress={calendarButtonOnPress}>
           <FeatherIcon
             name={calendarIcon ? calendarIcon : "calendar"}
             size={20}
@@ -55,7 +58,7 @@ export function Header({
       }
 
       {activeMoreVerticalButton &&
-        <ActionButton>
+        <ActionButton onPress={moreButtonOnPress}>
           <FeatherIcon
             name={moreIcon ? moreIcon : "more-vertical"}
             size={20}
