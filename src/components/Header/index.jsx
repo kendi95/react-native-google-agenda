@@ -1,29 +1,30 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import {
   Container,
   MonthButton,
-  MonthLabel
+  MonthLabel,
 } from './styles';
 
-export function Header() {
+export function Header({
+  buttonLeft = null,
+  buttonsRight = []
+}) {
 
   return (
-    <>
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor="#efefef"
-      />
+    <Container color="#efefef">
+      {buttonLeft && React.cloneElement(buttonLeft)}
 
-      <Container color="#efefef">
-        <MonthButton color="#efefef">
-          <MonthLabel>January</MonthLabel>
-          <FeatherIcon name="chevron-down" size={24} />
-        </MonthButton>
-      </Container>
-    </>
+      <MonthButton color="#efefef">
+        <MonthLabel>January</MonthLabel>
+        <FeatherIcon name="chevron-down" size={20} />
+      </MonthButton>
+
+      {buttonsRight.length > 0 &&
+        buttonsRight.map((childElement) => React.cloneElement(childElement))
+      }
+    </Container>
   );
 
 }
