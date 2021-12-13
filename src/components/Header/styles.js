@@ -9,7 +9,7 @@ export const Container = styled.View`
   flex-direction: row;
   align-items: center;
   background-color: ${({ color }) => color};
-  padding: 24px 16px 24px 16px;
+  padding: 16px 16px 16px 16px;
 `;
 
 export const MonthButton = styled(RectButton)`
@@ -17,6 +17,7 @@ export const MonthButton = styled(RectButton)`
   flex-direction: row;
   align-items: center;
 
+  width: 100%;
   height: 72px;
   padding: 8px;
   background-color: ${({ color }) => color};
@@ -28,11 +29,10 @@ export const MonthLabel = styled.Text`
 `;
 
 export const ActionButton = styled(BorderlessButton)`
-  width: 48px;
-  height: 48px;
-  border-radius: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
 
   align-items: center;
   justify-content: center;
-  margin-left: 8px;
 `;

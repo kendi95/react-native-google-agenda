@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 import {
@@ -26,7 +27,10 @@ export function Header({
   return (
     <Container color="#efefef">
       {activeMenuButton &&
-        <ActionButton onPress={menuButtonOnPress}>
+        <ActionButton
+          onPress={menuButtonOnPress}
+          style={styles.menuButton}
+        >
           <FeatherIcon
             name={menuIcon ? menuIcon : "menu"}
             size={20}
@@ -40,7 +44,10 @@ export function Header({
       </MonthButton>
 
       {activeSearchButton &&
-        <ActionButton onPress={searchButtonOnPress}>
+        <ActionButton
+          onPress={searchButtonOnPress}
+          style={styles.buttonLeft}
+        >
           <FeatherIcon
             name={searchIcon ? searchIcon : "search"}
             size={20}
@@ -49,7 +56,10 @@ export function Header({
       }
 
       {activeCalendarButton &&
-        <ActionButton onPress={calendarButtonOnPress}>
+        <ActionButton
+          onPress={calendarButtonOnPress}
+          style={styles.buttonLeft}
+        >
           <FeatherIcon
             name={calendarIcon ? calendarIcon : "calendar"}
             size={20}
@@ -58,7 +68,10 @@ export function Header({
       }
 
       {activeMoreVerticalButton &&
-        <ActionButton onPress={moreButtonOnPress}>
+        <ActionButton
+          onPress={moreButtonOnPress}
+          style={styles.buttonLeft}
+        >
           <FeatherIcon
             name={moreIcon ? moreIcon : "more-vertical"}
             size={20}
@@ -69,3 +82,12 @@ export function Header({
   );
 
 }
+
+const styles = StyleSheet.create({
+  menuButton: {
+    marginRight: 8
+  },
+  buttonLeft: {
+    marginLeft: 8
+  }
+});
