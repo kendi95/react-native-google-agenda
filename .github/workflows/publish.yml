@@ -20,7 +20,7 @@ jobs:
           registry-url: https://registry.npmjs.org
 
       - name: publishing...
-        run: npm publish --access public
+        run: npm publish
         working-directory: react-native-google-agenda
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
