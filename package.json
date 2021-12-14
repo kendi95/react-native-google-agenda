@@ -1,13 +1,13 @@
 {
   "name": "react-native-google-agenda",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A library inspired by google agenda.",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "vers": "node ./versionalization.js && git add .",
-    "commit": "yarn git-cz && git push && npm login && npm publish"
+    "commit": "yarn git-cz && git push"
   },
   "devDependencies": {
     "@types/react-native-vector-icons": "^6.4.10",
