@@ -17,10 +17,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-          registry-url: https://registry.npmjs.org
-
-      - name: publishing...
+          registry-url: https://registry.npmjs.org/
         run: npm publish
-        working-directory: react-native-google-agenda
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
