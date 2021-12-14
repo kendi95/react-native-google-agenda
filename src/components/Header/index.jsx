@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { format } from 'date-fns';
+import { Easing, useSharedValue, withTiming, useDerivedValue, interpolate, useAnimatedStyle } from 'react-native-reanimated';
 
 import {
   Container,
@@ -29,6 +30,31 @@ export function Header({
     return format(currentMonth, "MMMM");
   }, [currentMonth]);
 
+  const animation = useSharedValue(0);
+
+  const rotation = useDerivedValue(() => {
+    return interpolate(
+      animation.value,
+      [0, 180]
+    );
+  });
+
+  const animationStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          rotate: rotation.value + 'deg'
+        }
+      ]
+    }
+  });
+
+  const handleShowCalendar = () => {
+    animation.value = withTiming(animation.value === 0 ? 180 : 0, {
+      duration: 500,
+    });
+  }
+
   return (
     <Container color="#efefef">
       {activeMenuButton &&
@@ -43,9 +69,13 @@ export function Header({
         </ActionButton>
       }
 
-      <MonthButton color="#efefef">
+      <MonthButton onPress={handleShowCalendar} color="#efefef">
         <MonthLabel>{monthFormatted}</MonthLabel>
-        <FeatherIcon name="chevron-down" size={20} />
+        <FeatherIcon
+          name="chevron-down"
+          size={20}
+          style={animationStyle}
+        />
       </MonthButton>
 
       {activeSearchButton &&
