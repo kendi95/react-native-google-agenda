@@ -2,11 +2,18 @@ import React, { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { format } from 'date-fns';
-import { Easing, useSharedValue, withTiming, useDerivedValue, interpolate, useAnimatedStyle } from 'react-native-reanimated';
+import {
+  useSharedValue,
+  withTiming,
+  useDerivedValue,
+  interpolate,
+  useAnimatedStyle
+} from 'react-native-reanimated';
 
 import {
   Container,
   MonthButton,
+  IconContainer,
   MonthLabel,
   ActionButton
 } from './styles';
@@ -78,11 +85,9 @@ export function Header({
 
       <MonthButton onPress={handleShowCalendar} color="#efefef">
         <MonthLabel>{monthFormatted}</MonthLabel>
-        <FeatherIcon
-          name="chevron-down"
-          size={20}
-          style={animationStyle}
-        />
+        <IconContainer style={animationStyle}>
+          <FeatherIcon name="chevron-down" size={20} />
+        </IconContainer>
       </MonthButton>
 
       {activeSearchButton &&

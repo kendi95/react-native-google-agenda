@@ -24,6 +24,12 @@ export const MonthButton = styled(TouchableOpacity)`
   background-color: ${({ color }) => color};
 `;
 
+export const IconContainer = styled.View`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const MonthLabel = styled.Text`
   font-size: 18px;
   margin-right: 8px;
