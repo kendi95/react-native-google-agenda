@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { format } from 'date-fns';
@@ -25,16 +25,8 @@ export function Header({
   calendarButtonOnPress = () => {},
   moreButtonOnPress = () => {}
 }) {
-  const [month, setMonth] = useState<Date>(new Date());
-
-  useEffect(() => {
-    setMonth((oldCurrentMonth) => {
-      if (oldCurrentMonth !== currentMonth) {
-        return currentMonth;
-      }
-
-      return oldCurrentMonth;
-    });
+  const monthFormatted = useMemo(() => {
+    return format(currentMonth, "MMMM");
   }, [currentMonth]);
 
   return (
@@ -52,7 +44,7 @@ export function Header({
       }
 
       <MonthButton color="#efefef">
-        <MonthLabel>{month}</MonthLabel>
+        <MonthLabel>{monthFormatted}</MonthLabel>
         <FeatherIcon name="chevron-down" size={20} />
       </MonthButton>
 
