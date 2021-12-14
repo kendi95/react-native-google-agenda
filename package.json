@@ -1,6 +1,6 @@
 {
   "name": "react-native-google-agenda",
-  "version": "0.3.11",
+  "version": "0.4.0",
   "description": "A library inspired by google agenda.",
   "main": "index.js",
   "types": "index.d.ts",
@@ -22,13 +22,15 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.27.1",
     "prettier": "^2.5.1",
-    "prettier-eslint": "^13.0.0"
+    "prettier-eslint": "^13.0.0",
+    "react-native-reanimated": "^2.3.0"
   },
   "peerDependencies": {
     "date-fns": "^2.27.0",
     "react": "^17.0.2",
     "react-native": "^0.64.3",
     "react-native-gesture-handler": "1.10.3",
+    "react-native-reanimated": "^2.3.0",
     "react-native-vector-icons": "^9.0.0",
     "styled-components": "^5.3.3"
   },
