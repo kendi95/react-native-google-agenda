@@ -15,7 +15,8 @@ import {
   MonthButton,
   IconContainer,
   MonthLabel,
-  ActionButton
+  ActionButton,
+  CalendarAcordion
 } from './styles';
 
 export function Header({
@@ -38,6 +39,7 @@ export function Header({
   }, [currentMonth]);
 
   const animation = useSharedValue(0);
+  const animationAccordion = useSharedValue(0);
 
   const rotation = useDerivedValue(() => {
     return interpolate(
@@ -47,7 +49,15 @@ export function Header({
     );
   });
 
-  const animationStyle = useAnimatedStyle(() => {
+  const heightAccordion = useDerivedValue(() => {
+    return interpolate(
+      animationAccordion.value,
+      [0, 350],
+      [0, 350]
+    );
+  });
+
+  const animationRotateStyle = useAnimatedStyle(() => {
     return {
       transform: [
         {
@@ -57,69 +67,86 @@ export function Header({
     }
   });
 
+  const animationAccordionStyle = useAnimatedStyle(() => {
+    return {
+      height: heightAccordion.value
+    }
+  });
+
   const handleShowCalendar = () => {
-    animation.value = withTiming(animation.value === 0 ? 180 : 0, {
-      duration: 250,
-    });
+    animation.value = withTiming(
+      animation.value === 0 ? 180 : 0,
+      { duration: 300 }
+    );
+    animationAccordion.value = withTiming(
+      animationAccordion.value === 0 ? 350 : 0,
+      { duration: 300 }
+    );
   }
 
   return (
-    <Container color="#efefef">
-      {activeMenuButton &&
-        <ActionButton
-          onPress={menuButtonOnPress}
-          style={styles.menuButton}
-        >
-          <FeatherIcon
-            name={menuIcon ? menuIcon : "menu"}
-            size={20}
-          />
-        </ActionButton>
-      }
+    <>
+      <Container color="#efefef">
+        {activeMenuButton &&
+          <ActionButton
+            onPress={menuButtonOnPress}
+            style={styles.menuButton}
+          >
+            <FeatherIcon
+              name={menuIcon ? menuIcon : "menu"}
+              size={20}
+            />
+          </ActionButton>
+        }
 
-      <MonthButton onPress={handleShowCalendar} color="#efefef">
-        <MonthLabel>{monthFormatted}</MonthLabel>
-        <IconContainer style={animationStyle}>
-          <FeatherIcon name="chevron-down" size={20} />
-        </IconContainer>
-      </MonthButton>
+        <MonthButton onPress={handleShowCalendar} color="#efefef">
+          <MonthLabel>{monthFormatted}</MonthLabel>
+          <IconContainer style={animationRotateStyle}>
+            <FeatherIcon name="chevron-down" size={20} />
+          </IconContainer>
+        </MonthButton>
 
-      {activeSearchButton &&
-        <ActionButton
-          onPress={searchButtonOnPress}
-          style={styles.buttonLeft}
-        >
-          <FeatherIcon
-            name={searchIcon ? searchIcon : "search"}
-            size={20}
-          />
-        </ActionButton>
-      }
+        {activeSearchButton &&
+          <ActionButton
+            onPress={searchButtonOnPress}
+            style={styles.buttonLeft}
+          >
+            <FeatherIcon
+              name={searchIcon ? searchIcon : "search"}
+              size={20}
+            />
+          </ActionButton>
+        }
 
-      {activeCalendarButton &&
-        <ActionButton
-          onPress={calendarButtonOnPress}
-          style={styles.buttonLeft}
-        >
-          <FeatherIcon
-            name={calendarIcon ? calendarIcon : "calendar"}
-            size={20}
-          />
-        </ActionButton>
-      }
+        {activeCalendarButton &&
+          <ActionButton
+            onPress={calendarButtonOnPress}
+            style={styles.buttonLeft}
+          >
+            <FeatherIcon
+              name={calendarIcon ? calendarIcon : "calendar"}
+              size={20}
+            />
+          </ActionButton>
+        }
 
-      {activeMoreVerticalButton &&
-        <ActionButton
-          onPress={moreButtonOnPress}
-          style={styles.buttonLeft}
-        >
-          <FeatherIcon
-            name={moreIcon ? moreIcon : "more-vertical"}
-            size={20}
-          />
-        </ActionButton>
-      }
-    </Container>
+        {activeMoreVerticalButton &&
+          <ActionButton
+            onPress={moreButtonOnPress}
+            style={styles.buttonLeft}
+          >
+            <FeatherIcon
+              name={moreIcon ? moreIcon : "more-vertical"}
+              size={20}
+            />
+          </ActionButton>
+        }
+      </Container>
+
+      <CalendarAcordion style={animationAccordionStyle}>
+
+      </CalendarAcordion>
+    </>
   );
 
 }
