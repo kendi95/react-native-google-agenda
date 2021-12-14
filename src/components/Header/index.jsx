@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import { format } from 'date-fns';
 
 import {
   Container,
@@ -18,11 +19,23 @@ export function Header({
   searchIcon = null,
   calendarIcon = null,
   moreIcon = null,
+  currentMonth = new Date(),
   menuButtonOnPress = () => {},
   searchButtonOnPress = () => {},
   calendarButtonOnPress = () => {},
   moreButtonOnPress = () => {}
 }) {
+  const [month, setMonth] = useState<Date>(new Date());
+
+  useEffect(() => {
+    setMonth((oldCurrentMonth) => {
+      if (oldCurrentMonth !== currentMonth) {
+        return currentMonth;
+      }
+
+      return oldCurrentMonth;
+    });
+  }, [currentMonth]);
 
   return (
     <Container color="#efefef">
@@ -39,7 +52,7 @@ export function Header({
       }
 
       <MonthButton color="#efefef">
-        <MonthLabel>January</MonthLabel>
+        <MonthLabel>{month}</MonthLabel>
         <FeatherIcon name="chevron-down" size={20} />
       </MonthButton>
 

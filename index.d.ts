@@ -50,6 +50,12 @@ interface HeaderProps {
    */
   moreIcon?: FeatherIconName;
 
+  /**
+   * @default date_now current month
+   * @type { Date }
+   */
+  currentMonth?: Date;
+
   menuButtonOnPress?(): void;
   searchButtonOnPress?(): void;
   calendarButtonOnPress?(): void;
