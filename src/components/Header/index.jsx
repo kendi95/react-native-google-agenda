@@ -51,9 +51,15 @@ export function Header({
   });
 
   const handleShowCalendar = () => {
-    animation.value = withTiming(animation.value === 0 ? 180 : 0, {
-      duration: 500,
-    });
+    if (animation.value === 0) {
+      animation.value = withTiming(180, {
+        duration: 500,
+      });
+    } else {
+      animation.value = withTiming(0, {
+        duration: 500,
+      });
+    }
   }
 
   return (
