@@ -1,0 +1,26 @@
+name: " Publish library to npmjs"
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    name: publish!!!
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout...
+        uses: actions/checkout@v2
+
+      - name: node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+
+      - name: publishing...
+        run: npm publish --access public
+        working-directory: react-native-google-agenda
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
