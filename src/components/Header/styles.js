@@ -1,6 +1,5 @@
 import styled from 'styled-components/native';
 import { BorderlessButton } from 'react-native-gesture-handler';
-import { TouchableOpacity } from 'react-native';
 
 export const Container = styled.View`
   width: 100%;
@@ -13,7 +12,7 @@ export const Container = styled.View`
   padding: 16px 16px 16px 16px;
 `;
 
-export const MonthButton = styled(TouchableOpacity)`
+export const MonthButton = styled(BorderlessButton)`
   flex: 1;
   flex-direction: row;
   align-items: center;

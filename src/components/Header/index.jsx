@@ -42,8 +42,8 @@ export function Header({
   const rotation = useDerivedValue(() => {
     return interpolate(
       animation.value,
-      [0, 180],
-      [0, 180]
+      [0, 360],
+      [0, 360]
     );
   });
 
