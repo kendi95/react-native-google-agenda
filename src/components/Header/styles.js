@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
-import { BorderlessButton } from 'react-native-gesture-handler';
+import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
+import Animated from 'react-native-reanimated';
 
 export const Container = styled.View`
   width: 100%;
@@ -12,7 +13,7 @@ export const Container = styled.View`
   padding: 16px 16px 16px 16px;
 `;
 
-export const MonthButton = styled(BorderlessButton)`
+export const MonthButton = styled(RectButton)`
   flex: 1;
   flex-direction: row;
   align-items: center;
@@ -23,14 +24,14 @@ export const MonthButton = styled(BorderlessButton)`
   background-color: ${({ color }) => color};
 `;
 
-export const IconContainer = styled.View`
+export const IconContainer = styled(Animated.View)`
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 export const MonthLabel = styled.Text`
-  font-size: 18px;
+  font-size: 24px;
   margin-right: 8px;
 `;
 
