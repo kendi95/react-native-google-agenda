@@ -14,7 +14,7 @@ export const Container = styled(Animated.View)`
   justify-content: center;
   padding: 8px;
   background: ${({ backgroundColor }) => backgroundColor};
-  /* margin-top: -16px; */
+  margin-top: -16px;
 `;
 
 export const Content = styled(Animated.View)`
