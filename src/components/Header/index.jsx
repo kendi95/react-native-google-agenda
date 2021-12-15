@@ -136,10 +136,12 @@ export function Header({
         }
       </Container>
 
-      <CalendarAccordion
-        isShowAccordion={showAccordion}
-        backgroundColor={backgroundCalendarAccordion}
-      />
+      {!disabledChevron && (
+        <CalendarAccordion
+          isShowAccordion={showAccordion}
+          backgroundColor={backgroundCalendarAccordion}
+        />
+      )}
     </>
   );
 

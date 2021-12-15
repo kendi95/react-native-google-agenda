@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Text } from 'react-native';
 import  {
   Extrapolate,
   useAnimatedStyle,
@@ -9,6 +8,8 @@ import  {
   withTiming,
   Easing
 } from 'react-native-reanimated';
+
+import { Calendar } from '../Calendar';
 
 import {
   Container,
@@ -25,8 +26,8 @@ export function CalendarAccordion({
   const heightAccordion = useDerivedValue(() => {
     return interpolate(
       animationAccordion.value,
-      [0, 300],
-      [0, 300],
+      [0, 260],
+      [0, 260],
       Extrapolate.CLAMP
     );
   });
@@ -50,17 +51,17 @@ export function CalendarAccordion({
 
   useEffect(() => {
     animationAccordion.value = withTiming(
-      isShowAccordion ? 300 : 0,
+      isShowAccordion ? 260 : 0,
       {
-        duration: 300,
+        duration: 200,
         easing: Easing.inOut(Easing.ease)
       }
     );
 
-    animationContent.value =withTiming(
+    animationContent.value = withTiming(
       isShowAccordion ? 1 : 0,
       {
-        duration: 300
+        duration: 200
       }
     );
   }, [isShowAccordion]);
@@ -68,11 +69,7 @@ export function CalendarAccordion({
   return (
     <Container style={animationAccordionStyle} backgroundColor={backgroundColor}>
       <Content style={opacityAccordion}>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        <Text>Test</Text>
+        <Calendar />
       </Content>
     </Container>
   );
