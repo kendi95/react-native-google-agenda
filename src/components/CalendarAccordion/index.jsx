@@ -62,7 +62,7 @@ export function CalendarAccordion({
     );
 
     animationContent.value = withTiming(
-      1,
+      isShowAccordion ? 1: 0,
       {
         duration: 240,
         easing: Easing.inOut(Easing.ease)
