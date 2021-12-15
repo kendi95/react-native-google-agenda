@@ -31,6 +31,17 @@ export function CalendarAccordion({
     );
   });
 
+  const opacityAccordion = useAnimatedStyle(() => {
+    return {
+      opacity: interpolate(
+        animationContent.value,
+        [0, 1],
+        [0, 1],
+        Extrapolate.CLAMP
+      )
+    }
+  });
+
   const animationAccordionStyle = useAnimatedStyle(() => {
     return {
       height: heightAccordion.value,
@@ -45,11 +56,18 @@ export function CalendarAccordion({
         easing: Easing.inOut(Easing.ease)
       }
     );
+
+    animationContent.value =withTiming(
+      isShowAccordion ? 1 : 0,
+      {
+        duration: 300
+      }
+    );
   }, [isShowAccordion]);
 
   return (
     <Container style={animationAccordionStyle} backgroundColor={backgroundColor}>
-      <Content style={{ opacity: isShowAccordion ? 1 : 0 }}>
+      <Content style={opacityAccordion}>
         <Text>Test</Text>
         <Text>Test</Text>
         <Text>Test</Text>
