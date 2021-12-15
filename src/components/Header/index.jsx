@@ -8,7 +8,6 @@ import {
   useDerivedValue,
   interpolate,
   useAnimatedStyle,
-  Transitioning,
   Extrapolate,
 } from 'react-native-reanimated';
 
@@ -76,7 +75,7 @@ export function Header({
   }
 
   return (
-    <Transitioning.View>
+    <>
       <Container color="#efefef">
         {activeMenuButton &&
           <ActionButton
@@ -141,7 +140,7 @@ export function Header({
         isShowAccordion={showAccordion}
         backgroundColor={backgroundCalendarAccordion}
       />
-    </Transitioning.View>
+    </>
   );
 
 }
