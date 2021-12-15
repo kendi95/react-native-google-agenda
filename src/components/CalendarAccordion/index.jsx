@@ -61,18 +61,18 @@ export function CalendarAccordion({
       }
     );
 
-    animationContent.value = withTiming(
-      isShowAccordion ? 1: 0,
-      {
-        duration: 240,
-        easing: Easing.inOut(Easing.ease)
-      }
-    )
+    // animationContent.value = withTiming(
+    //   isShowAccordion ? 1: 0,
+    //   {
+    //     duration: 240,
+    //     easing: Easing.inOut(Easing.ease)
+    //   }
+    // );
   }, [isShowAccordion]);
 
   return (
     <Container style={animationAccordionStyle} backgroundColor={backgroundColor}>
-      <Content style={animationOpacityStyle}>
+      <Content>
         <Text>Test</Text>
         <Text>Test</Text>
         <Text>Test</Text>
