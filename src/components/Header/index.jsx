@@ -7,7 +7,11 @@ import {
   withTiming,
   useDerivedValue,
   interpolate,
-  useAnimatedStyle
+  useAnimatedStyle,
+  Transition,
+  Transitioning,
+  Extrapolate,
+  Easing
 } from 'react-native-reanimated';
 
 import {
@@ -45,7 +49,8 @@ export function Header({
     return interpolate(
       animation.value,
       [0, 180],
-      [0, 180]
+      [0, 180],
+      Extrapolate.CLAMP
     );
   });
 
@@ -53,7 +58,8 @@ export function Header({
     return interpolate(
       animationAccordion.value,
       [0, 350],
-      [0, 350]
+      [0, 350],
+      Extrapolate.CLAMP
     );
   });
 
@@ -69,7 +75,11 @@ export function Header({
 
   const animationAccordionStyle = useAnimatedStyle(() => {
     return {
-      height: heightAccordion.value
+      transform: [
+        {
+          scaleY: heightAccordion.value,
+        }
+      ]
     }
   });
 
@@ -80,12 +90,15 @@ export function Header({
     );
     animationAccordion.value = withTiming(
       animationAccordion.value === 0 ? 350 : 0,
-      { duration: 300 }
+      {
+        duration: 300,
+        easing: Easing.inOut(Easing.ease)
+      }
     );
   }
 
   return (
-    <>
+    <Transitioning.View>
       <Container color="#efefef">
         {activeMenuButton &&
           <ActionButton
@@ -146,7 +159,7 @@ export function Header({
       <CalendarAcordion style={animationAccordionStyle}>
 
       </CalendarAcordion>
-    </>
+    </Transitioning.View>
   );
 
 }
