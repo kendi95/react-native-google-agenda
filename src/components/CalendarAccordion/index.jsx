@@ -4,7 +4,8 @@ import  {
   Extrapolate,
   useAnimatedStyle,
   useDerivedValue,
-  useSharedValue
+  useSharedValue,
+  interpolate
 } from 'react-native-reanimated';
 
 import {
