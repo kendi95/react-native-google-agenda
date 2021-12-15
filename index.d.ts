@@ -27,6 +27,12 @@ interface HeaderProps {
   activeMoreVerticalButton?: boolean;
 
   /**
+   * @default false chevron icon is desable by default
+   * @type { boolean }
+   */
+  disabledChevron?: boolean;
+
+  /**
    * @default null names of Feather icon
    * @type { FeatherIconName }
    */

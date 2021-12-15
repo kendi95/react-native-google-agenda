@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { format } from 'date-fns';
@@ -8,19 +8,18 @@ import {
   useDerivedValue,
   interpolate,
   useAnimatedStyle,
-  Transition,
   Transitioning,
   Extrapolate,
-  Easing
 } from 'react-native-reanimated';
+
+import { CalendarAccordion } from '../CalendarAccordion';
 
 import {
   Container,
   MonthButton,
   IconContainer,
   MonthLabel,
-  ActionButton,
-  CalendarAcordion
+  ActionButton
 } from './styles';
 
 export function Header({
@@ -28,6 +27,7 @@ export function Header({
   activeSearchButton = true,
   activeCalendarButton = true,
   activeMoreVerticalButton = true,
+  disabledChevron = false,
   menuIcon = null,
   searchIcon = null,
   calendarIcon = null,
@@ -38,12 +38,13 @@ export function Header({
   calendarButtonOnPress = () => {},
   moreButtonOnPress = () => {}
 }) {
+  const [showAccordion, setShowAccordion] = useState(false);
+
   const monthFormatted = useMemo(() => {
     return format(currentMonth, "MMMM");
   }, [currentMonth]);
 
   const animation = useSharedValue(0);
-  const animationAccordion = useSharedValue(0);
 
   const rotation = useDerivedValue(() => {
     return interpolate(
@@ -54,46 +55,22 @@ export function Header({
     );
   });
 
-  const heightAccordion = useDerivedValue(() => {
-    return interpolate(
-      animationAccordion.value,
-      [0, 350],
-      [0, 350],
-      Extrapolate.CLAMP
-    );
-  });
-
   const animationRotateStyle = useAnimatedStyle(() => {
     return {
       transform: [
         {
-          rotate: rotation.value + 'deg'
-        }
-      ]
-    }
-  });
-
-  const animationAccordionStyle = useAnimatedStyle(() => {
-    return {
-      transform: [
-        {
-          scaleY: heightAccordion.value,
+          rotate: `${rotation.value} deg`
         }
       ]
     }
   });
 
   const handleShowCalendar = () => {
+    setShowAccordion(oldShowAccordion => !oldShowAccordion);
+
     animation.value = withTiming(
       animation.value === 0 ? 180 : 0,
       { duration: 300 }
-    );
-    animationAccordion.value = withTiming(
-      animationAccordion.value === 0 ? 350 : 0,
-      {
-        duration: 300,
-        easing: Easing.inOut(Easing.ease)
-      }
     );
   }
 
@@ -114,9 +91,12 @@ export function Header({
 
         <MonthButton onPress={handleShowCalendar} color="#efefef">
           <MonthLabel>{monthFormatted}</MonthLabel>
-          <IconContainer style={animationRotateStyle}>
-            <FeatherIcon name="chevron-down" size={20} />
-          </IconContainer>
+
+          {!disabledChevron && (
+            <IconContainer style={animationRotateStyle}>
+              <FeatherIcon name="chevron-down" size={20} />
+            </IconContainer>
+          )}
         </MonthButton>
 
         {activeSearchButton &&
@@ -156,9 +136,7 @@ export function Header({
         }
       </Container>
 
-      <CalendarAcordion style={animationAccordionStyle}>
-
-      </CalendarAcordion>
+      <CalendarAccordion isShowAccordion={showAccordion} />
     </Transitioning.View>
   );
 

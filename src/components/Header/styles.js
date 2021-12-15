@@ -43,14 +43,3 @@ export const ActionButton = styled(BorderlessButton)`
   align-items: center;
   justify-content: center;
 `;
-
-export const CalendarAcordion = styled(Animated.View)`
-  width: 100%;
-  min-height: 0px;
-  height: 0px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-`;
