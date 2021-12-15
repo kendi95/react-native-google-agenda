@@ -1,6 +1,6 @@
 {
   "name": "react-native-google-agenda",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "A library inspired by google agenda.",
   "main": "index.js",
   "types": "index.d.ts",
