@@ -13,7 +13,6 @@ export const Container = styled(Animated.View)`
   align-items: center;
   justify-content: center;
   background: ${({ backgroundColor }) => backgroundColor};
-  /* margin-top: -16px; */
 `;
 
 export const Content = styled(Animated.View)`

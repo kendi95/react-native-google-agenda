@@ -31,24 +31,9 @@ export function CalendarAccordion({
     );
   });
 
-  const opacityAccordion = useDerivedValue(() => {
-    return interpolate(
-      animationContent.value,
-      [0, 0.5, 1]
-      [0, 0.5, 1],
-      Extrapolate.CLAMP
-    );
-  });
-
   const animationAccordionStyle = useAnimatedStyle(() => {
     return {
       height: heightAccordion.value,
-    }
-  });
-
-  const animationOpacityStyle = useAnimatedStyle(() => {
-    return {
-      opacity: opacityAccordion.value
     }
   });
 
@@ -60,19 +45,11 @@ export function CalendarAccordion({
         easing: Easing.inOut(Easing.ease)
       }
     );
-
-    // animationContent.value = withTiming(
-    //   isShowAccordion ? 1: 0,
-    //   {
-    //     duration: 240,
-    //     easing: Easing.inOut(Easing.ease)
-    //   }
-    // );
   }, [isShowAccordion]);
 
   return (
-    <Container style={animationAccordionStyle} backgroundColor="#606060">
-      <Content>
+    <Container style={animationAccordionStyle} backgroundColor={backgroundColor}>
+      <Content style={{ opacity: isShowAccordion ? 1 : 0 }}>
         <Text>Test</Text>
         <Text>Test</Text>
         <Text>Test</Text>
