@@ -15,7 +15,8 @@ import {
 } from './styles';
 
 export function CalendarAccordion({
-  isShowAccordion = false
+  isShowAccordion = false,
+  backgroundColor
 }) {
   const animationAccordion = useSharedValue(0);
 
@@ -30,11 +31,7 @@ export function CalendarAccordion({
 
   const animationAccordionStyle = useAnimatedStyle(() => {
     return {
-      transform: [
-        {
-          scaleY: heightAccordion.value,
-        }
-      ]
+      height: heightAccordion.value,
     }
   });
 
@@ -49,7 +46,7 @@ export function CalendarAccordion({
   }, [isShowAccordion]);
 
   return (
-    <Container style={animationAccordionStyle}>
+    <Container style={animationAccordionStyle} backgroundColor={backgroundColor}>
       <Text>Test</Text>
       <Text>Test</Text>
       <Text>Test</Text>

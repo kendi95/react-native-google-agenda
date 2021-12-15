@@ -33,6 +33,7 @@ export function Header({
   calendarIcon = null,
   moreIcon = null,
   currentMonth = new Date(),
+  backgroundCalendarAccordion = "#efefef",
   menuButtonOnPress = () => {},
   searchButtonOnPress = () => {},
   calendarButtonOnPress = () => {},
@@ -136,7 +137,10 @@ export function Header({
         }
       </Container>
 
-      <CalendarAccordion isShowAccordion={showAccordion} />
+      <CalendarAccordion
+        isShowAccordion={showAccordion}
+        backgroundColor={backgroundCalendarAccordion}
+      />
     </Transitioning.View>
   );
 
