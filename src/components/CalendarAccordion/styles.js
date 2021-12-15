@@ -12,9 +12,8 @@ export const Container = styled(Animated.View)`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
   background: ${({ backgroundColor }) => backgroundColor};
-  margin-top: -16px;
+  /* margin-top: -16px; */
 `;
 
 export const Content = styled(Animated.View)`
