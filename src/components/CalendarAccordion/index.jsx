@@ -71,7 +71,7 @@ export function CalendarAccordion({
   }, [isShowAccordion]);
 
   return (
-    <Container style={animationAccordionStyle} backgroundColor={backgroundColor}>
+    <Container style={animationAccordionStyle} backgroundColor="#606060">
       <Content>
         <Text>Test</Text>
         <Text>Test</Text>
