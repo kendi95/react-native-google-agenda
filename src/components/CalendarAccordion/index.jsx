@@ -5,7 +5,9 @@ import  {
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
-  interpolate
+  interpolate,
+  withTiming,
+  Easing
 } from 'react-native-reanimated';
 
 import {
