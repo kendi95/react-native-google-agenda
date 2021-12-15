@@ -1,8 +1,11 @@
 import styled from 'styled-components/native';
 import Animated from 'react-native-reanimated';
+import { Dimensions } from 'react-native';
+
+const { width } = Dimensions.get('screen');
 
 export const Container = styled(Animated.View)`
-  width: 100%;
+  width: ${width}px;
   min-height: 0px;
   height: 0px;
 
@@ -11,4 +14,12 @@ export const Container = styled(Animated.View)`
   justify-content: center;
   padding: 8px;
   background: ${({ backgroundColor }) => backgroundColor};
+  /* margin-top: -16px; */
+`;
+
+export const Content = styled(Animated.View)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
 `;

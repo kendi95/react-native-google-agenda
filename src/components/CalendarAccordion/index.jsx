@@ -11,7 +11,8 @@ import  {
 } from 'react-native-reanimated';
 
 import {
-  Container
+  Container,
+  Content
 } from './styles';
 
 export function CalendarAccordion({
@@ -19,12 +20,22 @@ export function CalendarAccordion({
   backgroundColor
 }) {
   const animationAccordion = useSharedValue(0);
+  const animationContent = useSharedValue(0);
 
   const heightAccordion = useDerivedValue(() => {
     return interpolate(
       animationAccordion.value,
-      [0, 350],
-      [0, 350],
+      [0, 300],
+      [0, 300],
+      Extrapolate.CLAMP
+    );
+  });
+
+  const opacityAccordion = useDerivedValue(() => {
+    return interpolate(
+      animationContent.value,
+      [0, 0.5, 1]
+      [0, 0.5, 1],
       Extrapolate.CLAMP
     );
   });
@@ -35,23 +46,39 @@ export function CalendarAccordion({
     }
   });
 
+  const animationOpacityStyle = useAnimatedStyle(() => {
+    return {
+      opacity: opacityAccordion.value
+    }
+  });
+
   useEffect(() => {
     animationAccordion.value = withTiming(
-      isShowAccordion ? 350 : 0,
+      isShowAccordion ? 300 : 0,
       {
         duration: 300,
         easing: Easing.inOut(Easing.ease)
       }
     );
+
+    animationContent.value = withTiming(
+      1,
+      {
+        duration: 240,
+        easing: Easing.inOut(Easing.ease)
+      }
+    )
   }, [isShowAccordion]);
 
   return (
     <Container style={animationAccordionStyle} backgroundColor={backgroundColor}>
-      <Text>Test</Text>
-      <Text>Test</Text>
-      <Text>Test</Text>
-      <Text>Test</Text>
-      <Text>Test</Text>
+      <Content style={animationOpacityStyle}>
+        <Text>Test</Text>
+        <Text>Test</Text>
+        <Text>Test</Text>
+        <Text>Test</Text>
+        <Text>Test</Text>
+      </Content>
     </Container>
   );
 
