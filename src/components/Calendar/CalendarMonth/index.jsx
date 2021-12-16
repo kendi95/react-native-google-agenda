@@ -58,7 +58,6 @@ export function CalendarMonth() {
             backgroundColor={isToday ? "#0e87f8" : "transparent"}
           >
             <MonthLabel
-              isSameToday={isToday}
               color={isToday ? "#ffffff" : "#464646"}
             >
               {day}

@@ -23,4 +23,5 @@ export const MonthLabelContainer = styled.View`
 
 export const MonthLabel = styled.Text`
   font-size: 16px;
+  color: ${({ color }) => color};
 `;
