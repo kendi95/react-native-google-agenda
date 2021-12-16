@@ -1,13 +1,10 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-
   max-width: 100%;
   width: 100%;
+  display: flex;
+  align-items: center;
 `;
 
 export const MonthLabelContainer = styled.View`

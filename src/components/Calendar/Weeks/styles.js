@@ -9,22 +9,12 @@ export const Container = styled.View`
   align-items: center;
   justify-content: space-between;
   margin-right: 16px;
-  background: #909090;
 `;
 
 export const WeekLabel = styled.Text`
   font-size: 12px;
   padding: 8px;
 
-  ${({ isSameDay, color }) =>
-    isSameDay
-    ? css`
-        color: ${color};
-        font-weight: bold;
-      `
-    : css`
-        color: ${color};
-        font-weight: normal;
-      `
-  };
+  color: ${({ isSameDay, color }) => isSameDay ? color : color};
+  font-weight: ${({ isSameDay }) => isSameDay ? 'bold' : 'normal'};
 `;
