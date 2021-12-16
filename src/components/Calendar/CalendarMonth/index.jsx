@@ -8,8 +8,6 @@ import {
 } from 'date-fns';
 import { v4 as uuidV4 } from 'uuid';
 
-import { Weeks } from '../Weeks';
-
 import {
   Container,
   MonthLabelContainer,
@@ -49,23 +47,20 @@ export function CalendarMonth() {
   }, []);
 
   return (
-    <>
-      <Weeks />
-      <Container>
-        {daysOfMonth.map(({ key, day, isToday }) => (
-          <MonthLabelContainer
-            key={key}
-            backgroundColor={isToday ? "#0e87f8" : "transparent"}
+    <Container>
+      {daysOfMonth.map(({ key, day, isToday }) => (
+        <MonthLabelContainer
+          key={key}
+          backgroundColor={isToday ? "#0e87f8" : "transparent"}
+        >
+          <MonthLabel
+            color={isToday ? "#ffffff" : "#464646"}
           >
-            <MonthLabel
-              color={isToday ? "#ffffff" : "#464646"}
-            >
-              {day}
-            </MonthLabel>
-          </MonthLabelContainer>
-        ))}
-      </Container>
-    </>
+            {day}
+          </MonthLabel>
+        </MonthLabelContainer>
+      ))}
+    </Container>
   );
 
 }
