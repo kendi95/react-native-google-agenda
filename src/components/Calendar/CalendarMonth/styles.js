@@ -11,15 +11,19 @@ export const Container = styled.View`
 `;
 
 export const MonthLabelContainer = styled.View`
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4px;
+  padding: 8px;
   margin: 4px;
 
   background-color: ${({ backgroundColor }) => backgroundColor};
 `;
 
 export const MonthLabel = styled.Text`
-  font-size: 14px;
+  font-size: 16px;
 `;
