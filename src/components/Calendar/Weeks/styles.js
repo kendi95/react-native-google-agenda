@@ -9,6 +9,7 @@ export const Container = styled.View`
   align-items: center;
   justify-content: space-between;
   margin-right: 16px;
+  background: #909090;
 `;
 
 export const WeekLabel = styled.Text`
