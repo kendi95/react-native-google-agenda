@@ -3,7 +3,8 @@ import {
   startOfWeek,
   endOfWeek,
   eachDayOfInterval,
-  format
+  format,
+  isSameDay
 } from 'date-fns';
 import { v4 as uuidV4 } from 'uuid';
 
@@ -35,7 +36,8 @@ export function Weeks() {
       return {
         key: uuidV4(),
         shortName: format(day, "EEEEE"),
-        name: format(day, "EEEE")
+        name: format(day, "EEEE"),
+        isSameDay: isSameDay(day, new Date())
       }
     });
 
@@ -48,8 +50,14 @@ export function Weeks() {
 
   return (
     <Container>
-      { daysOfWeek.map(({ shortName, key }) => (
-        <WeekLabel key={key}>{shortName}</WeekLabel>
+      { daysOfWeek.map(({ shortName, key, isSameDay }) => (
+        <WeekLabel
+          key={key}
+          isSameDay={isSameDay}
+          color={isSameDay ? "#0e87f8" : "#757575"}
+        >
+          {shortName}
+        </WeekLabel>
       )) }
     </Container>
   );

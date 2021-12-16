@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Weeks } from './Weeks';
+import { CalendarMonth } from './CalendarMonth';
 
 import { Container } from './styles';
 
@@ -8,7 +8,7 @@ export function Calendar() {
 
   return (
     <Container>
-      <Weeks />
+      <CalendarMonth />
     </Container>
   );
 
