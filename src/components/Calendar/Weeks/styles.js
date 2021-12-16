@@ -9,4 +9,5 @@ export const Container = styled.View`
 
 export const WeekLabel = styled.Text`
   font-size: 12px;
+  padding: 8px;
 `;
