@@ -1,8 +1,11 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  display: grid;
-  grid-template-columns: repeat(1fr, 7);
+  display: flex;
+  align-items: center;
+
+  max-width: 100%;
+  width: 100%;
 `;
 
 export const MonthLabelContainer = styled.View`
@@ -10,6 +13,7 @@ export const MonthLabelContainer = styled.View`
   align-items: center;
   justify-content: center;
   padding: 4px;
+  margin: 4px;
 
   background-color: ${({ backgroundColor }) => backgroundColor};
 `;
