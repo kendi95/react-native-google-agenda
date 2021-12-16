@@ -11,7 +11,6 @@ export const Container = styled(Animated.View)`
 
   display: flex;
   align-items: center;
-  justify-content: center;
   background: ${({ backgroundColor }) => backgroundColor};
 `;
 

@@ -5,6 +5,7 @@ import {
   eachDayOfInterval,
   format
 } from 'date-fns';
+import { v4 as uuidV4 } from 'uuid';
 
 import { Container, WeekLabel } from './styles';
 
@@ -32,6 +33,7 @@ export function Weeks() {
 
     const week = intervalDaysOfWeek.map((day) => {
       return {
+        key: uuidV4(),
         shortName: format(day, "EEEEE"),
         name: format(day, "EEEE")
       }
@@ -46,8 +48,8 @@ export function Weeks() {
 
   return (
     <Container>
-      { daysOfWeek.map(({ shortName }) => (
-        <WeekLabel>{shortName}</WeekLabel>
+      { daysOfWeek.map(({ shortName, key }) => (
+        <WeekLabel key={key}>{shortName}</WeekLabel>
       )) }
     </Container>
   );
