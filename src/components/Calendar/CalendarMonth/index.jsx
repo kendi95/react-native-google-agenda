@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   startOfMonth,
   endOfMonth,
@@ -44,7 +44,9 @@ export function CalendarMonth() {
     setDaysOfMonth(month);
   }
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    onGetDaysOnMonth();
+  }, []);
 
   return (
     <>
