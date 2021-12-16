@@ -6,6 +6,7 @@ import {
   isToday,
   format
 } from 'date-fns';
+import { v4 as uuidV4 } from 'uuid';
 
 import { Weeks } from '../Weeks';
 
@@ -34,6 +35,7 @@ export function CalendarMonth() {
 
     const month = intervalDaysOfMonth.map((date) => {
       return {
+        key: uuidV4(),
         day: format(date, "d"),
         isToday: isToday(date)
       }
@@ -48,8 +50,9 @@ export function CalendarMonth() {
     <>
       <Weeks />
       <Container>
-        {daysOfMonth.map(({ day, isToday }) => (
+        {daysOfMonth.map(({ key, day, isToday }) => (
           <MonthLabelContainer
+            key={key}
             backgroundColor={isToday ? "#0e87f8" : "transparent"}
           >
             <MonthLabel
