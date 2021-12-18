@@ -1,45 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import {
-  startOfMonth,
-  endOfMonth,
-  eachDayOfInterval,
-  isToday,
-  format
-} from 'date-fns';
+import { format } from 'date-fns';
 import { v4 as uuidV4 } from 'uuid';
 
 import {
   Container,
+  WeekContainer,
   MonthLabelContainer,
   MonthLabel
 } from './styles';
+import { generateMonth } from '../../../utils/generateMonth';
 
 export function CalendarMonth() {
 
   const [daysOfMonth, setDaysOfMonth] = useState([]);
 
   const onGetDaysOnMonth = () => {
-    const startDayOfMonth = startOfMonth(
-      new Date(new Date().setHours(0, 0, 0, 0))
+    const genMonth = generateMonth();
+    const month = genMonth();
+
+    setDaysOfMonth(
+      month
+        .map((week) => week)
+        .map((day) => {
+          return {
+            key: uuidV4(),
+            date: day,
+            dateShort: format(day, "d")
+          }
+        })
     );
-    const endDayOfMonth = endOfMonth(
-      new Date(new Date().setHours(23, 59, 59, 0))
-    );
-
-    const intervalDaysOfMonth = eachDayOfInterval({
-      start: startDayOfMonth,
-      end: endDayOfMonth
-    });
-
-    const month = intervalDaysOfMonth.map((date) => {
-      return {
-        key: uuidV4(),
-        day: format(date, "d"),
-        isToday: isToday(date)
-      }
-    });
-
-    setDaysOfMonth(month);
   }
 
   useEffect(() => {
@@ -48,17 +37,14 @@ export function CalendarMonth() {
 
   return (
     <Container>
-      {daysOfMonth.map(({ key, day, isToday }) => (
-        <MonthLabelContainer
-          key={key}
-          backgroundColor={isToday ? "#0e87f8" : "transparent"}
-        >
-          <MonthLabel
-            color={isToday ? "#ffffff" : "#464646"}
-          >
-            {day}
-          </MonthLabel>
-        </MonthLabelContainer>
+      {daysOfMonth.map((week, index) => (
+        <WeekContainer>
+          {week.map(({ dateShort, key }, indexOfDay) => (
+            <MonthLabelContainer key={key}>
+              <MonthLabel>{dateShort}</MonthLabel>
+            </MonthLabelContainer>
+          ))}
+        </WeekContainer>
       ))}
     </Container>
   );

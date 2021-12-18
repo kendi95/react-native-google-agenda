@@ -7,6 +7,15 @@ export const Container = styled.View`
   align-items: center;
 `;
 
+export const WeekContainer = styled.View`
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+`;
+
 export const MonthLabelContainer = styled.View`
   width: 8px;
   height: 8px;
