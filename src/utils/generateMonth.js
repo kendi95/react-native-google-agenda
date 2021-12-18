@@ -37,7 +37,7 @@ export function generateMonth(startDate = new Date()) {
 
     const range = month;
     month = [];
-    date = addDays(lastDayOfRange(range), 1);
+    date = addDays(daysOfRange(range), 1);
 
     return range;
   }
