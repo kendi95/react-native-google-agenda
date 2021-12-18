@@ -31,13 +31,15 @@ export function CalendarMonth() {
     );
   }
 
+  console.log(daysOfMonth)
+
   useEffect(() => {
     onGetDaysOnMonth();
   }, []);
 
   return (
     <Container>
-      {daysOfMonth.map((week, index) => (
+      {/* {daysOfMonth.map((week, index) => (
         <WeekContainer>
           {week.map(({ dateShort, key }, indexOfDay) => (
             <MonthLabelContainer backgroundColor="#efefef" key={key}>
@@ -45,7 +47,7 @@ export function CalendarMonth() {
             </MonthLabelContainer>
           ))}
         </WeekContainer>
-      ))}
+      ))} */}
     </Container>
   );
 
