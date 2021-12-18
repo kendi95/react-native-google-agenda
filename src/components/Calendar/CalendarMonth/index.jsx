@@ -39,11 +39,11 @@ export function CalendarMonth() {
     const firstDayOfWeek = startOfWeek(firstDayOfMonth, {
       weekStartsOn: 0
     });
-    const lastDayOfWeek = endOfWeek(endOfDay(firstDayOfWeek), {
+    const lastDayOfWeek = endOfWeek(firstDayOfWeek, {
       weekStartsOn: 0
     });
 
-    let daysOfWeek = eachWeekOfInterval({
+    let daysOfWeek = eachDayOfInterval({
       start: firstDayOfWeek,
       end: lastDayOfWeek
     });
@@ -58,7 +58,7 @@ export function CalendarMonth() {
         weekStartsOn: 0
       });
 
-      daysOfWeek = eachWeekOfInterval({
+      daysOfWeek = eachDayOfInterval({
         start: addDays(lastDayOfWeek, 1),
         end: nextLastDayOfWeek
       });
