@@ -37,11 +37,9 @@ export function CalendarMonth() {
     );
 
     const firstDayOfWeek = startOfWeek(firstDayOfMonth, {
-      locale: ptBR,
       weekStartsOn: 0
     });
     const lastDayOfWeek = endOfWeek(endOfDay(firstDayOfWeek), {
-      locale: ptBR,
       weekStartsOn: 0
     });
 
@@ -50,14 +48,13 @@ export function CalendarMonth() {
       end: lastDayOfWeek
     });
 
-    month[0] = daysOfWeek;
+    month.push(daysOfWeek);
     let lastDay = lastDayOfWeek;
 
     while(month[month.length - 1][6] < lastDayOfMonth) {
       lastDay = addDays(lastDay, 1);
 
       const nextLastDayOfWeek = endOfWeek(endOfDay(lastDay), {
-        locale: ptBR,
         weekStartsOn: 0
       });
 
@@ -68,7 +65,7 @@ export function CalendarMonth() {
 
       lastDay = nextLastDayOfWeek;
 
-      month[month.length + 1] = daysOfWeek;
+      month.push(daysOfWeek);
     }
 
     console.log(month);
