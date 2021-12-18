@@ -18,20 +18,22 @@ export function CalendarMonth() {
     const genMonth = generateMonth();
     const month = genMonth();
 
-    setDaysOfMonth(
-      month
-        .map((week) => week)
-        .map((day) => {
-          return {
-            key: uuidV4(),
-            date: day,
-            dateShort: format(day, "d")
-          }
-        })
-    );
+    console.log(month)
+
+    // setDaysOfMonth(
+    //   month
+    //     .map((week) => week)
+    //     .map((day) => {
+    //       return {
+    //         key: uuidV4(),
+    //         date: day,
+    //         dateShort: format(day, "d")
+    //       }
+    //     })
+    // );
   }
 
-  console.log(daysOfMonth)
+
 
   useEffect(() => {
     onGetDaysOnMonth();
