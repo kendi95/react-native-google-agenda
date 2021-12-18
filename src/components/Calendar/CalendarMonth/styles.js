@@ -27,10 +27,18 @@ export const MonthLabelContainer = styled.View`
   padding: 8px;
   margin: 4px;
 
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: ${
+    ({ backgroundColor }) => !backgroundColor
+    ? 'transparent'
+    : backgroundColor
+  };
 `;
 
 export const MonthLabel = styled.Text`
   font-size: 16px;
-  color: ${({ color }) => color};
+  color: ${
+    ({ color }) => !color
+    ? 'transparent'
+    : color
+  };
 `;

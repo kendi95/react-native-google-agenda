@@ -41,7 +41,7 @@ export function CalendarMonth() {
         <WeekContainer>
           {week.map(({ dateShort, key }, indexOfDay) => (
             <MonthLabelContainer key={key}>
-              <MonthLabel>{dateShort}</MonthLabel>
+              <MonthLabel color="#404040">{dateShort}</MonthLabel>
             </MonthLabelContainer>
           ))}
         </WeekContainer>
