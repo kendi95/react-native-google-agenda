@@ -59,7 +59,7 @@ export function CalendarMonth() {
       });
 
       daysOfWeek = eachDayOfInterval({
-        start: addDays(lastDay, 1),
+        start: lastDay,
         end: nextLastDayOfWeek
       });
 
