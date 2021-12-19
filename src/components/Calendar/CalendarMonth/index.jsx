@@ -19,7 +19,8 @@ import { v4 as uuidV4 } from 'uuid';
 import {
   Container,
   MonthLabelContainer,
-  MonthLabel
+  MonthLabel,
+  WeekContainer
 } from './styles';
 
 export function CalendarMonth() {
@@ -79,18 +80,32 @@ export function CalendarMonth() {
 
   return (
     <Container>
-      {daysOfMonth.map(({ key, day, isToday }) => (
-        <MonthLabelContainer
-          key={key}
-          backgroundColor={isToday ? "#0e87f8" : "transparent"}
-        >
-          <MonthLabel
-            color={isToday ? "#ffffff" : "#464646"}
+      <WeekContainer>
+        {[1, 2, 3, 4, 5, 6, 7].map((day) => (
+          <MonthLabelContainer
+            backgroundColor={"transparent"}
           >
-            {day}
-          </MonthLabel>
-        </MonthLabelContainer>
-      ))}
+            <MonthLabel
+              color={"#464646"}
+            >
+              {day}
+            </MonthLabel>
+          </MonthLabelContainer>
+        ))}
+      </WeekContainer>
+      <WeekContainer>
+        {[8, 9, 10, 11, 12, 13, 14].map((day) => (
+          <MonthLabelContainer
+            backgroundColor={"transparent"}
+          >
+            <MonthLabel
+              color={"#464646"}
+            >
+              {day}
+            </MonthLabel>
+          </MonthLabelContainer>
+        ))}
+      </WeekContainer>
     </Container>
   );
 
