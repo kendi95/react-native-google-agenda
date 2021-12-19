@@ -69,9 +69,7 @@ export function CalendarMonth() {
       month.push(daysOfWeek);
     }
 
-    console.log(month);
-
-    // setDaysOfMonth(month);
+    setDaysOfMonth(month);
   }
 
   useEffect(() => {
