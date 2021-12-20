@@ -6,5 +6,5 @@ export const Container = styled.View`
 
   display: flex;
   align-items: flex-start;
-  padding: 8px 0 8px 8px;
+  justify-content: flex-start;
 `;

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { format } from 'date-fns';
@@ -21,6 +21,8 @@ import {
   ActionButton
 } from './styles';
 
+import { useGoogleAgenda } from '../../hooks/useGoogleAgenda';
+
 export function Header({
   activeMenuButton = true,
   activeSearchButton = true,
@@ -36,9 +38,9 @@ export function Header({
   menuButtonOnPress = () => {},
   searchButtonOnPress = () => {},
   calendarButtonOnPress = () => {},
-  moreButtonOnPress = () => {}
+  moreButtonOnPress = () => {},
 }) {
-  const [showAccordion, setShowAccordion] = useState(false);
+  const { handleToggleAccordion } = useGoogleAgenda();
 
   const monthFormatted = useMemo(() => {
     return format(currentMonth, "MMMM");
@@ -66,7 +68,11 @@ export function Header({
   });
 
   const handleShowCalendar = () => {
-    setShowAccordion(oldShowAccordion => !oldShowAccordion);
+    handleToggleAccordion();
+
+    // if (isShowContent) {
+    //   setIsShowContent(false);
+    // }
 
     animation.value = withTiming(
       animation.value === 0 ? 180 : 0,
@@ -138,7 +144,6 @@ export function Header({
 
       {!disabledChevron && (
         <CalendarAccordion
-          isShowAccordion={showAccordion}
           backgroundColor={backgroundCalendarAccordion}
         />
       )}

@@ -5,26 +5,22 @@ import {
   startOfMonth,
   endOfMonth,
   eachDayOfInterval,
-  isToday,
-  format,
-  eachWeekOfInterval,
-  lastDayOfMonth,
   startOfDay,
   endOfDay,
-  addDays
+  addDays,
+  format,
+  isToday,
+  isSameMonth
 } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
-import { v4 as uuidV4 } from 'uuid';
 
 import {
   Container,
-  MonthLabelContainer,
-  MonthLabel,
+  DayLabelContainer,
+  DayLabel,
   WeekContainer
 } from './styles';
 
 export function CalendarMonth() {
-
   const [daysOfMonth, setDaysOfMonth] = useState([]);
 
   const onGetDaysOnMonth = () => {
@@ -69,7 +65,19 @@ export function CalendarMonth() {
       month.push(daysOfWeek);
     }
 
-    setDaysOfMonth(month);
+    const newMonth = month
+      .map((week) => {
+        return week.map((date) => {
+          return {
+            key: date,
+            date,
+            dateFormat: format(date, "d"),
+            isSameMonth: isSameMonth(date, new Date())
+          }
+        })
+      });
+
+    setDaysOfMonth(newMonth);
   }
 
   useEffect(() => {
@@ -78,32 +86,22 @@ export function CalendarMonth() {
 
   return (
     <Container>
-      <WeekContainer>
-        {[1, 2, 3, 4, 5, 6, 7].map((day) => (
-          <MonthLabelContainer
-            backgroundColor={"transparent"}
-          >
-            <MonthLabel
-              color={"#464646"}
+      {daysOfMonth.map((week, index) => (
+        <WeekContainer key={index}>
+          {week.map(({ key, date, dateFormat, isSameMonth }) => (
+            <DayLabelContainer
+              key={key}
+              backgroundColor={isToday(date) ? "#5894e4" : "transparent"}
             >
-              {day}
-            </MonthLabel>
-          </MonthLabelContainer>
-        ))}
-      </WeekContainer>
-      <WeekContainer>
-        {[8, 9, 10, 11, 12, 13, 14].map((day) => (
-          <MonthLabelContainer
-            backgroundColor={"transparent"}
-          >
-            <MonthLabel
-              color={"#464646"}
-            >
-              {day}
-            </MonthLabel>
-          </MonthLabelContainer>
-        ))}
-      </WeekContainer>
+              <DayLabel
+                color={isToday(date) ? "#efefef" : "#404040"}
+              >
+                {isSameMonth ? dateFormat : ""}
+              </DayLabel>
+            </DayLabelContainer>
+          ))}
+        </WeekContainer>
+      ))}
     </Container>
   );
 

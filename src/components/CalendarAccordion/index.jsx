@@ -16,10 +16,13 @@ import {
   Content
 } from './styles';
 
+import { useGoogleAgenda } from '../../hooks/useGoogleAgenda';
+
 export function CalendarAccordion({
-  isShowAccordion = false,
   backgroundColor
 }) {
+  const { isShowAccordion } = useGoogleAgenda();
+
   const animationAccordion = useSharedValue(0);
   const animationContent = useSharedValue(0);
 
@@ -50,24 +53,44 @@ export function CalendarAccordion({
   });
 
   useEffect(() => {
-    animationAccordion.value = withTiming(
-      isShowAccordion ? 260 : 0,
-      {
-        duration: 200,
-        easing: Easing.inOut(Easing.ease)
-      }
-    );
+    if (isShowAccordion) {
+      animationAccordion.value = withTiming(
+        isShowAccordion ? 260 : 0,
+        {
+          duration: 100,
+          easing: Easing.inOut(Easing.ease)
+        }
+      );
 
-    animationContent.value = withTiming(
-      isShowAccordion ? 1 : 0,
-      {
-        duration: 200
-      }
-    );
+      animationContent.value = withTiming(
+        isShowAccordion ? 1 : 0,
+        {
+          duration: 350
+        }
+      );
+    } else {
+      animationContent.value = withTiming(
+        isShowAccordion ? 1 : 0,
+        {
+          duration: 100
+        }
+      );
+
+      animationAccordion.value = withTiming(
+        isShowAccordion ? 260 : 0,
+        {
+          duration: 300,
+          easing: Easing.inOut(Easing.ease)
+        }
+      );
+    }
   }, [isShowAccordion]);
 
   return (
-    <Container style={animationAccordionStyle} backgroundColor={backgroundColor}>
+    <Container
+      style={animationAccordionStyle}
+      backgroundColor={backgroundColor}
+    >
       <Content style={opacityAccordion}>
         <Calendar />
       </Content>

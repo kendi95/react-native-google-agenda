@@ -6,7 +6,6 @@ import {
   format,
   isSameDay
 } from 'date-fns';
-import { v4 as uuidV4 } from 'uuid';
 
 import { Container, WeekLabel } from './styles';
 
@@ -34,7 +33,7 @@ export function Weeks() {
 
     const week = intervalDaysOfWeek.map((day) => {
       return {
-        key: uuidV4(),
+        key: day,
         shortName: format(day, "EEEEE"),
         name: format(day, "EEEE"),
         isSameDay: isSameDay(day, new Date())

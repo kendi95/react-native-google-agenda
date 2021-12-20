@@ -1,31 +1,35 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
+import Animated from 'react-native-reanimated';
+
+const { width } = Dimensions.get('screen');
 
 export const Container = styled.View`
-  max-width: 100%;
-  width: 100%;
+  width: ${width}px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: flex-start;
 `;
 
 export const WeekContainer = styled.View`
-  width: 100%;
+  width: ${width}px;
 
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  padding: 0px 16px 0px 16px;
+  margin-top: 8px;
 `;
 
-export const MonthLabelContainer = styled.View`
-  width: 8px;
-  height: 8px;
-  border-radius: 4px;
+export const DayLabelContainer = styled.View`
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
-  margin: 4px;
 
   background-color: ${
     ({ backgroundColor }) => !backgroundColor
@@ -34,7 +38,7 @@ export const MonthLabelContainer = styled.View`
   };
 `;
 
-export const MonthLabel = styled.Text`
+export const DayLabel = styled.Text`
   font-size: 16px;
   color: ${
     ({ color }) => !color

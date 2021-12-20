@@ -10,13 +10,14 @@ export const Container = styled(Animated.View)`
   height: 0px;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   background: ${({ backgroundColor }) => backgroundColor};
 `;
 
 export const Content = styled(Animated.View)`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   background: transparent;
 `;
