@@ -1,11 +1,12 @@
 import styled from 'styled-components/native';
-import { Dimensions } from 'react-native';
-import Animated from 'react-native-reanimated';
+import { Dimensions, TouchableOpacity } from 'react-native';
 
 const { width } = Dimensions.get('screen');
 
 export const Container = styled.View`
   width: ${width}px;
+  height: 100%;
+
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -22,10 +23,10 @@ export const WeekContainer = styled.View`
   margin-top: 8px;
 `;
 
-export const DayLabelContainer = styled.View`
-  width: 32px;
-  height: 32px;
-  border-radius: 16px;
+export const DayLabelContainer = styled(TouchableOpacity)`
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
 
   display: flex;
   align-items: center;
@@ -39,7 +40,7 @@ export const DayLabelContainer = styled.View`
 `;
 
 export const DayLabel = styled.Text`
-  font-size: 16px;
+  font-size: 12px;
   color: ${
     ({ color }) => !color
     ? 'transparent'

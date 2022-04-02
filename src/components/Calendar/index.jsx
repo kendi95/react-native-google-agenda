@@ -5,12 +5,15 @@ import { Weeks } from './Weeks';
 
 import { Container } from './styles';
 
-export function Calendar() {
+import { generateMonth } from '../../utils/generateMonth';
+
+export function Calendar({ month }) {
+  const { currentMonth } = generateMonth();
 
   return (
     <Container>
       <Weeks />
-      <CalendarMonth />
+      <CalendarMonth month={currentMonth} />
     </Container>
   );
 

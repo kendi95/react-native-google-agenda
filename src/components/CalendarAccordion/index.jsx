@@ -6,14 +6,14 @@ import  {
   useSharedValue,
   interpolate,
   withTiming,
-  Easing
 } from 'react-native-reanimated';
 
 import { Calendar } from '../Calendar';
 
 import {
   Container,
-  Content
+  Content,
+  MonthList
 } from './styles';
 
 import { useGoogleAgenda } from '../../hooks/useGoogleAgenda';
@@ -21,7 +21,7 @@ import { useGoogleAgenda } from '../../hooks/useGoogleAgenda';
 export function CalendarAccordion({
   backgroundColor
 }) {
-  const { isShowAccordion } = useGoogleAgenda();
+  const { isShowAccordion, months } = useGoogleAgenda();
 
   const animationAccordion = useSharedValue(0);
   const animationContent = useSharedValue(0);
@@ -55,32 +55,30 @@ export function CalendarAccordion({
   useEffect(() => {
     if (isShowAccordion) {
       animationAccordion.value = withTiming(
-        isShowAccordion ? 260 : 0,
+        isShowAccordion ? 480 : 0,
         {
-          duration: 100,
-          easing: Easing.inOut(Easing.ease)
+          duration: 200,
         }
       );
 
       animationContent.value = withTiming(
         isShowAccordion ? 1 : 0,
         {
-          duration: 350
+          duration: 400
         }
       );
     } else {
       animationContent.value = withTiming(
         isShowAccordion ? 1 : 0,
         {
-          duration: 100
+          duration: 200
         }
       );
 
       animationAccordion.value = withTiming(
-        isShowAccordion ? 260 : 0,
+        isShowAccordion ? 480 : 0,
         {
-          duration: 300,
-          easing: Easing.inOut(Easing.ease)
+          duration: 400,
         }
       );
     }
@@ -88,11 +86,20 @@ export function CalendarAccordion({
 
   return (
     <Container
-      style={animationAccordionStyle}
       backgroundColor={backgroundColor}
+      style={animationAccordionStyle}
     >
-      <Content style={opacityAccordion}>
-        <Calendar />
+      <Content
+        style={opacityAccordion}
+      >
+        <MonthList
+          data={months}
+          pagingEnabled
+          scrollEventThrottle={16}
+          alwaysBounceHorizontal={false}
+          keyExtractor={(item) => String(item)}
+          renderItem={({ item }) => <Calendar month={item} />}
+        />
       </Content>
     </Container>
   );

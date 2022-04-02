@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import Animated from 'react-native-reanimated';
-import { Dimensions } from 'react-native';
+import { Dimensions, FlatList } from 'react-native';
 
 const { width } = Dimensions.get('screen');
 
@@ -20,4 +20,11 @@ export const Content = styled(Animated.View)`
   align-items: flex-start;
   justify-content: flex-start;
   background: transparent;
+`;
+
+export const MonthList = styled(FlatList).attrs({
+  horizontal: true,
+  showsHorizontalScrollIndicator: false
+})`
+
 `;

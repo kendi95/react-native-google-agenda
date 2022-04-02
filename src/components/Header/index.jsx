@@ -70,10 +70,6 @@ export function Header({
   const handleShowCalendar = () => {
     handleToggleAccordion();
 
-    // if (isShowContent) {
-    //   setIsShowContent(false);
-    // }
-
     animation.value = withTiming(
       animation.value === 0 ? 180 : 0,
       { duration: 300 }

@@ -14,7 +14,7 @@ export const Container = styled.View`
 `;
 
 export const WeekLabel = styled.Text`
-  font-size: 14px;
+  font-size: 10px;
   padding: 8px;
 
   color: ${({ isSameDay, color }) => isSameDay ? color : color};
