@@ -1,27 +1,30 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
   isToday,
   isSameDay
 } from 'date-fns';
+
+import { IMonth } from "../../../utils/generateMonth";
 
 import {
   Container,
   DayLabelContainer,
   DayLabel,
   WeekContainer
-} from './styles';
+} from "./styles";
 
 import { useGoogleAgenda } from '../../../hooks/useGoogleAgenda';
 
-export function CalendarMonth({ month }) {
-
+export const CalendarMonth: FC<{ month: IMonth[][] }> = ({ month }) => {
   const {
     selectedDate,
     onChangeSelectedDate,
   } = useGoogleAgenda();
 
-  const onBackgroundColorDayContainer = (date) => {
-    if (isToday(date)) {
+  const onBackgroundColorDayContainer = (date: Date | undefined) => {
+    if (!date) {
+      return "transparent";
+    } else if (isToday(date)) {
       return "#5894e4";
     } else if (isSameDay(date, new Date(selectedDate))) {
       return "#8bb5ec";
@@ -37,7 +40,7 @@ export function CalendarMonth({ month }) {
           {week.map(({ key, date, dateFormat, color }) => (
             <DayLabelContainer
               key={key}
-              onPress={() => onChangeSelectedDate(date)}
+              onPress={() => onChangeSelectedDate(date || new Date())}
               backgroundColor={onBackgroundColorDayContainer(date)}
             >
               <DayLabel color={color}>
@@ -49,5 +52,4 @@ export function CalendarMonth({ month }) {
       ))}
     </Container>
   );
-
 }

@@ -1,35 +1,39 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, FC } from 'react';
 
-import { generateWeek } from '../utils/generateWeek';
-import { generateMonth } from '../utils/generateMonth';
-import { generateMonths } from '../utils/generateMonths';
+import { generateWeek, IWeekProps } from "../utils/generateWeek";
+import { generateMonths } from "../utils/generateMonths";
+import { IMonth } from "../utils/generateMonth";
 
-export const GoogleAgenda = createContext({
-  isGeneratingMonths: false,
-  isShowAccordion: false,
-  selectedDate: "",
-  week: [],
-  months: [],
-  currentMonth: [],
-  month: [[]],
-  handleToggleAccordion: () => {},
-  onChangeSelectedDate: ((date) => {}),
-});
+type GoogleAgendaProps = {
+  isGeneratingMonths: boolean;
+  isShowAccordion: boolean;
+  selectedDate: string;
+  week: IWeekProps;
+  months: Date[];
+  currentMonth: IMonth[];
+  month: IMonth[][];
+  handleToggleAccordion(): void;
+  onChangeSelectedDate(date: Date): void;
+}
 
-export const GoogleAgendaProvider = ({ children }) => {
+export const GoogleAgenda = createContext({} as GoogleAgendaProps);
+
+export const GoogleAgendaProvider: FC = ({ children }) => {
   const [isGeneratingMonths, setIsGeneratingMonths] = useState(false);
   const [isShowAccordion, setIsShowAccordion] = useState(false);
-  const [selectedDate, setSelectedDate] = useState("");
-  const [months, setMonths] = useState([]);
-  const [currentMonth, setCurrentMonth] = useState([[]]);
-  const [week, setWeek] = useState([]);
+  const [selectedDate, setSelectedDate] = useState<string>("");
+  const [months, setMonths] = useState<Date[]>([]);
+  const [currentMonth, setCurrentMonth] = useState<IMonth[]>([]);
+  const [week, setWeek] = useState<IWeekProps>([]);
 
   function handleToggleAccordion() {
     setIsShowAccordion((oldIsShowAccordion) => !oldIsShowAccordion);
   }
 
-  function onChangeSelectedDate(date) {
-    setSelectedDate(date);
+  function onChangeSelectedDate(date: Date | undefined) {
+    if (date) {
+      setSelectedDate(date.toISOString());
+    }
   }
 
   function generateWeekAndMonth() {
@@ -71,5 +75,4 @@ export const GoogleAgendaProvider = ({ children }) => {
       { children }
     </GoogleAgenda.Provider>
   );
-
 }

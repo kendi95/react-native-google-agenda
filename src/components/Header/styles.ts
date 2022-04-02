@@ -2,7 +2,11 @@ import styled from 'styled-components/native';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 
-export const Container = styled.View`
+type ColorProps = {
+  color: string;
+}
+
+export const Container = styled.View<ColorProps>`
   width: 100%;
   min-height: 48px;
   height: 64px;
@@ -13,7 +17,7 @@ export const Container = styled.View`
   padding: 16px 16px 16px 16px;
 `;
 
-export const MonthButton = styled(RectButton)`
+export const MonthButton = styled(RectButton)<ColorProps>`
   flex: 1;
   flex-direction: row;
   align-items: center;

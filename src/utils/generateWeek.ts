@@ -6,7 +6,15 @@ import {
   isSameDay,
 } from "date-fns";
 
-export function generateWeek() {
+export type IWeekProps = Array<{
+  key: string;
+  shortName: string;
+  name: string;
+  isSameDay: boolean;
+  color: string;
+}>
+
+export function generateWeek(): { week: IWeekProps } {
   const startDayOfWeek = startOfWeek(
     new Date(new Date().setHours(0, 0, 0, 0)),
     {
@@ -25,9 +33,9 @@ export function generateWeek() {
     end: endDayOfWeek
   });
 
-  const week = intervalDaysOfWeek.map((day) => {
+  const week: IWeekProps = intervalDaysOfWeek.map((day) => {
     return {
-      key: day,
+      key: day.toISOString(),
       shortName: format(day, "EEEEE"),
       name: format(day, "EEEE"),
       isSameDay: isSameDay(day, new Date()),

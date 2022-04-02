@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, FC } from 'react';
 import { StyleSheet } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { format } from 'date-fns';
@@ -11,7 +11,9 @@ import {
   Extrapolate,
 } from 'react-native-reanimated';
 
-import { CalendarAccordion } from '../CalendarAccordion';
+import { IHeader } from "../../types";
+
+import { CalendarAccordion } from "../CalendarAccordion";
 
 import {
   Container,
@@ -19,27 +21,17 @@ import {
   IconContainer,
   MonthLabel,
   ActionButton
-} from './styles';
+} from "./styles";
 
 import { useGoogleAgenda } from '../../hooks/useGoogleAgenda';
 
-export function Header({
-  activeMenuButton = true,
-  activeSearchButton = true,
-  activeCalendarButton = true,
-  activeMoreVerticalButton = true,
-  disabledChevron = false,
-  menuIcon = null,
-  searchIcon = null,
-  calendarIcon = null,
-  moreIcon = null,
-  currentMonth = new Date(),
-  backgroundCalendarAccordion = "#efefef",
-  menuButtonOnPress = () => {},
-  searchButtonOnPress = () => {},
-  calendarButtonOnPress = () => {},
-  moreButtonOnPress = () => {},
-}) {
+export const Header: FC<IHeader> = ({
+  activeMenuButton, activeSearchButton, activeCalendarButton,
+  activeMoreVerticalButton, disabledChevron, menuIcon, searchIcon,
+  calendarIcon, moreIcon, currentMonth = new Date(), backgroundCalendarAccordion,
+  menuButtonOnPress, searchButtonOnPress, calendarButtonOnPress,
+  moreButtonOnPress
+}) => {
   const { handleToggleAccordion } = useGoogleAgenda();
 
   const monthFormatted = useMemo(() => {

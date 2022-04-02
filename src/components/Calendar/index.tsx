@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { CalendarMonth } from './CalendarMonth';
+import { CalendarMonth } from "./CalendarMonth";
 import { Weeks } from './Weeks';
 
-import { Container } from './styles';
+import { Container } from "./styles";
 
-import { generateMonth } from '../../utils/generateMonth';
+import { generateMonth } from "../../utils/generateMonth";
 
-export function Calendar({ month }) {
+export function Calendar() {
   const { currentMonth } = generateMonth();
 
   return (

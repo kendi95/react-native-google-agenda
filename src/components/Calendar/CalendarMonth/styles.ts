@@ -3,6 +3,14 @@ import { Dimensions, TouchableOpacity } from 'react-native';
 
 const { width } = Dimensions.get('screen');
 
+type DayLabelContainerProps = {
+  backgroundColor?: string;
+}
+
+type DayLabelProps = {
+  color?: string;
+}
+
 export const Container = styled.View`
   width: ${width}px;
   height: 100%;
@@ -23,7 +31,7 @@ export const WeekContainer = styled.View`
   margin-top: 8px;
 `;
 
-export const DayLabelContainer = styled(TouchableOpacity)`
+export const DayLabelContainer = styled(TouchableOpacity)<DayLabelContainerProps>`
   width: 28px;
   height: 28px;
   border-radius: 14px;
@@ -39,7 +47,7 @@ export const DayLabelContainer = styled(TouchableOpacity)`
   };
 `;
 
-export const DayLabel = styled.Text`
+export const DayLabel = styled.Text<DayLabelProps>`
   font-size: 12px;
   color: ${
     ({ color }) => !color

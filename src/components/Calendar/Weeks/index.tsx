@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, WeekLabel } from './styles';
+import { Container, WeekLabel } from "./styles";
 
 import { useGoogleAgenda } from '../../../hooks/useGoogleAgenda';
 

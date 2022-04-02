@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import  {
   Extrapolate,
   useAnimatedStyle,
@@ -14,13 +14,15 @@ import {
   Container,
   Content,
   MonthList
-} from './styles';
+} from "./styles";
 
-import { useGoogleAgenda } from '../../hooks/useGoogleAgenda';
+import { useGoogleAgenda } from "../../hooks/useGoogleAgenda";
 
-export function CalendarAccordion({
-  backgroundColor
-}) {
+type ICalendarAccordion = {
+  backgroundColor: string;
+}
+
+export const CalendarAccordion: FC<ICalendarAccordion> = ({ backgroundColor }) => {
   const { isShowAccordion, months } = useGoogleAgenda();
 
   const animationAccordion = useSharedValue(0);
@@ -98,7 +100,7 @@ export function CalendarAccordion({
           scrollEventThrottle={16}
           alwaysBounceHorizontal={false}
           keyExtractor={(item) => String(item)}
-          renderItem={({ item }) => <Calendar month={item} />}
+          renderItem={({ item }) => <Calendar />}
         />
       </Content>
     </Container>

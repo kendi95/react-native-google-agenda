@@ -12,7 +12,14 @@ import {
   isToday,
 } from "date-fns";
 
-export function generateMonth(m = new Date()) {
+export type IMonth = {
+  key: number;
+  date: Date;
+  dateFormat: string;
+  color: string;
+}
+
+export function generateMonth(m = new Date()): { currentMonth: IMonth[][] } {
   const month = [];
 
   const firstDayOfMonth = startOfMonth(

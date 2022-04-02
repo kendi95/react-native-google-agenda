@@ -4,7 +4,11 @@ import { Dimensions, FlatList } from 'react-native';
 
 const { width } = Dimensions.get('screen');
 
-export const Container = styled(Animated.View)`
+type ContainerProps = {
+  backgroundColor: string;
+}
+
+export const Container = styled(Animated.View)<ContainerProps>`
   width: ${width}px;
   min-height: 0px;
   height: 0px;
